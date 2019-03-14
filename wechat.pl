@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# use lib '/root/Mojo-Weixin-1.4.2/lib';
+#use lib '/root/Mojo-Weixin-1.4.2/lib';
 # use lib '/home/wangzhiwei/Documents/git/Mojo-Weixin/lib';
 use Mojo::Weixin;
 use Data::Dumper;
@@ -26,16 +26,16 @@ $client->load("ShowMsg");
 $client->load("Translation");
 # 
 # 
-$client->load("PostQRcode",data=>{
-    smtp    =>  'smtp.126.com', #邮箱的smtp地址
-    port    =>  '25', #smtp服务器端口，默认25
-    from    =>  'mydevmail@126.com', #发件人
-    to      =>  'wangzhiwei5010@126.com', #收件人
-    user    =>  'mydevmail@126.com', #smtp登录帐号
-    pass    =>  'wzw520Gxd' #smtp登录密码
-    #tls     =>  0      #可选，是否使用SMTPS协议，默认为0                            
-                        #在没有设置的情况下，如果使用的端口为465，则该选项会自动被设置为1
-});
+# $client->load("PostQRcode",data=>{
+#     smtp    =>  'smtp.126.com', #邮箱的smtp地址
+#     port    =>  '25', #smtp服务器端口，默认25
+#     from    =>  'mydevmail@126.com', #发件人
+#     to      =>  'wangzhiwei5010@126.com', #收件人
+#     user    =>  'mydevmail@126.com', #smtp登录帐号
+#     pass    =>  'wzw520Gxd' #smtp登录密码
+#     #tls     =>  0      #可选，是否使用SMTPS协议，默认为0                            
+#                         #在没有设置的情况下，如果使用的端口为465，则该选项会自动被设置为1
+# });
 
 #ready事件触发时 表示客户端一切准备就绪：已经成功登录、已经加载完个人/好友/群信息等
 #你的代码建议尽量写在 ready 事件中
