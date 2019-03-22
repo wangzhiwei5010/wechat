@@ -3,7 +3,8 @@
 # use lib '/home/wangzhiwei/Documents/git/Mojo-Weixin/lib';
 use Mojo::Weixin;
 use Data::Dumper;
-my $client = Mojo::Weixin->new(log_encoding=>"utf8","log_path"=>"/root/wechat.log","log_level"=>"info");
+# my $client = Mojo::Weixin->new(log_encoding=>"utf8","log_path"=>"/root/wechat.log","log_level"=>"info");
+my $client = Mojo::Weixin->new(log_encoding=>"utf8","log_level"=>"info");
 $client->load("IRCShell",data=>{
     listen=>[ {host=>"0.0.0.0",port=>6667},], #可选，IRC服务器监听的地址+端口，默认0.0.0.0:6667
     load_friend => 1, #默认是0 是否初始为每个好友生成irc虚拟帐号并加入频道 #我的好友
