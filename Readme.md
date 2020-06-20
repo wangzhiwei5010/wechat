@@ -1,4 +1,5 @@
 #Install Weechat
+```
 apt-get update
 export LANG="zh_CN.UTF-8"
 apt-get install weechat
@@ -18,3 +19,4 @@ apt-get install language-pack-zh-hans
 
 /set weechat.bar.buffers.position "right"
 /set weechat.bar.buffers.size 30
+```
