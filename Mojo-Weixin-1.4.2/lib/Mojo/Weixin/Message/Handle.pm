@@ -385,7 +385,7 @@ sub _parse_sync_data {
                     $msg->{app_url} = $dom->at('msg > appmsg > url')->content;
                     $msg->{app_desc} = $dom->at('msg > appmsg > des')->content;
                     for( ($msg->{app_title},$msg->{app_desc},$msg->{app_url},$msg->{app_name}) ){
-                        s/<!\[CDATA\[(.*?)\]\]>/$1/g;
+                        s/<!\[CDATA\[(.*?)\]\]>/$1/sg;
                     }
                     $msg->{app_url} = Mojo::Util::html_unescape($msg->{app_url});
                     $msg->{content} = "[应用分享]标题：@{[$msg->{app_title} || '未知']}\n[应用分享]描述：@{[$msg->{app_desc} || '未知']}\n[应用分享]应用：@{[$msg->{app_name} || '未知']}\n[应用分享]链接：@{[$msg->{app_url} || '未知']}";
@@ -453,6 +453,7 @@ sub _parse_sync_data {
                 $self->warn("payment message xml parse fail: $@") if $@;
                 $msg->{content} = "[转账](" . $msg->{content} . ")";
             }
+            $self->warn("html entities unescape fail:".($msg->{content}));
             $self->message_queue->put(Mojo::Weixin::Message->new($msg)); 
         }
     }

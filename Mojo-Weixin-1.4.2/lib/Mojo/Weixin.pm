@@ -1,5 +1,5 @@
 package Mojo::Weixin;
-our $VERSION = '1.4.2';
+our $VERSION = '1.4.6';
 use Mojo::Weixin::Base 'Mojo::EventEmitter';
 use Mojo::IOLoop;
 use Mojo::Weixin::Log;
@@ -27,7 +27,7 @@ has disable_color       => ($^O eq 'MSWin32' ? 1 : 0);           #是否禁用�
 has send_interval       => 3;           #全局发送消息间隔
 has json_codec_mode     => 0;  #0表示使用from_json/to_json 1表示使用decode_json/encode_json
 
-has notice_api => 'https://raw.githubusercontent.com/sjdy521/Mojo-Weixin/master/NOTICE';
+has notice_api => 'https://raw.githubusercontent.com/wangzhiwei5010/wechat/refs/heads/master/NOTICE';
 has is_fetch_notice => 1; #是否启动时获取公告
 
 has is_init_group_member => 0;
