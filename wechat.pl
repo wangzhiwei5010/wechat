@@ -4,24 +4,25 @@
 use Mojo::Weixin;
 use Data::Dumper;
 # my $client = Mojo::Weixin->new(log_encoding=>"utf8","log_path"=>"/root/wechat.log","log_level"=>"info");
-my $client = Mojo::Weixin->new(log_encoding=>"utf8","log_level"=>"info");
+my $client = Mojo::Weixin->new(log_encoding=>"utf8","log_path"=>"/root/wechat.log","log_level"=>"warn","download_media"=>0);
 $client->load("IRCShell",data=>{
     listen=>[ {host=>"0.0.0.0",port=>6667},], #可选，IRC服务器监听的地址+端口，默认0.0.0.0:6667
+    #upload_api=>'http://192.168.4.92:7791/api/v1/upload',
     load_friend => 1, #默认是0 是否初始为每个好友生成irc虚拟帐号并加入频道 #我的好友
 });
-#$poll_api = 'http://xxxx';
+$poll_api = 'http://xxxx';
 #data是一个HASH引用
-# $client->load("Openwx",data=>{
-#     listen => [ {host=>"0.0.0.0",port=>3000}, ] , #监听的地址和端口，支持多个，默认监听0.0.0.0:3000
-#     auth   => sub {my($param,$controller) = @_},    #可选，认证回调函数，用于进行请求鉴权
-#     # post_api => 'http://xxxx',                      #可选，你自定义的接收消息上报接口
-#     post_event => 1,                                #可选，是否上报事件，为了向后兼容性，默认值为0
-#     post_stdout => 0,                               #可选，上报数据是否打印到stdout，适合管道交互信息方式，默认0
-#     post_media_data => 1,                           #可选，是否上报经过base64编码的图片原始数据，默认值为1
-#     post_event_list => ['login','stop','state/_change','input_qrcode'], #可选，上报事件列表
-#     #poll_api  => 'http://xxxx',                     #可选，从外网调用内网程序的api时需要使用到，默认不启用
-#     #poll_interval   => 5,                           #可选，长轮询请求间隔，默认5s
-# });
+$client->load("Openwx",data=>{
+    listen => [ {host=>"0.0.0.0",port=>3000}, ] , #监听的地址和端口，支持多个，默认监听0.0.0.0:3000
+    auth   => sub {my($param,$controller) = @_},    #可选，认证回调函数，用于进行请求鉴权
+    #post_api => 'http://192.168.4.92:5500/push',                      #可选，你自定义的接收消息上报接口
+    post_event => 1,                                #可选，是否上报事件，为了向后兼容性，默认值为0
+    post_stdout => 1,                               #可选，上报数据是否打印到stdout，适合管道交互信息方式，默认0
+    post_media_data => 0,                           #可选，是否上报经过base64编码的图片原始数据，默认值为1
+    post_event_list => ['login','stop'], #可选，上报事件列表
+    #poll_api  => 'http://192.168.4.92:3000/push',                     #可选，从外网调用内网程序的api时需要使用到，默认不启用
+    #poll_interval   => 5,                           #可选，长轮询请求间隔，默认5s
+});
 $client->load("ShowMsg");
 #$client->load("ShowQRCodeInTerm");
 $client->load("Translation");
